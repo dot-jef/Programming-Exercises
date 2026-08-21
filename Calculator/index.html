@@ -3,14 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Calculator</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <h1> Calculator </h1>
-    <div id="Calculator">
-        <div></div>
-        <div></div>
+    <div id="calculator">
+        <div id="displayScreen">
+            <h1 id="numberDisplay"></h1>
+        </div>
+        <div id="buttonPads">
+            <button onclick="selectOperation('/')">/</button>
+            <button onclick="selectOperation('*')">*</button>
+            <button onclick="selectOperation('-')">-</button>
+            <button onclick="selectOperation('+')">+</button>
+            <button onclick="putNumber('7')">7</button>
+            <button onclick="putNumber('8')">8</button>
+            <button onclick="putNumber('9')">9</button>
+            <button onclick="putNumber('4')">4</button>
+            <button onclick="putNumber('5')">5</button>
+            <button onclick="putNumber('6')">6</button>
+            <button onclick="putNumber('1')">1</button>
+            <button onclick="putNumber('2')">2</button>
+            <button onclick="putNumber('3')">3</button>
+            <button onclick="putNumber('0')">0</button>
+            <button onclick="putDecimal()">.</button>
+            <button onclick="clearAll()">AC</button>
+            <button>Enter</button>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>
