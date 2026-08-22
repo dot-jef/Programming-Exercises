@@ -53,10 +53,14 @@ function calculate() {
         case "-":
             currentNumber = previousNumber - Number(currentNumber);
             break;
-        case "*":
+        case "x":
             currentNumber = previousNumber * Number(currentNumber);
             break;
         case "/":
+            if (currentNumber == 0) {
+                currentNumber = "Cannot divide by 0";
+                break;
+            }
             currentNumber = previousNumber / Number(currentNumber);
             break;
     }
