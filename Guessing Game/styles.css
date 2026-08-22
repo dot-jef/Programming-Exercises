@@ -1,0 +1,22 @@
+body {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+#guessingGame {
+    height: 50vh;
+    width: 50vw;
+    border: 1px solid black;
+}
+
+input, button {
+    margin: 10px
+}
+
+.hidden {
+    display: none;
+}
