@@ -1,11 +1,15 @@
 
-let numberDisplay = document.getElementById("numberDisplay");
-let previousNumber = 0;
+let currentNumberDisplay = document.getElementById("currentNumberDisplay");
+let previousNumberDisplay = document.getElementById("previousNumberDisplay");
+let operationDisplay = document.getElementById("operationDisplay");
+let previousNumber;
 let currentNumber = "0";
 let operation;
 
 function display() {
-    numberDisplay.textContent = currentNumber;
+    previousNumberDisplay.textContent = previousNumber;
+    currentNumberDisplay.textContent = currentNumber;
+    operationDisplay.textContent = operation;
 }
 
 function putNumber(input) {
@@ -22,34 +26,42 @@ function putNumber(input) {
 function putDecimal() {
     if (currentNumber == 0) {;
         display();
-    } else if (!isNaN(currentNumber) && currentNumber % 1 == 0) {
+    } else if (!isNaN(currentNumber) && currentNumber % 1 == 0 && !String(currentNumber).includes('.')) {
         currentNumber += ".";
     }
 }
 
 function selectOperation(input) {
-    if (input == "+") {
-        previousNumber = Number(currentNumber);
-        currentNumber = 0;
-        display();
-    } else if (input == "-") {
-        previousNumber = Number(currentNumber);
-        currentNumber = 0;
-        display();
-    } else if (input == "*") {
-        previousNumber = Number(currentNumber);
-        currentNumber = 0;
-        display();
-    } else if (input == "/") {
-        previousNumber = Number(currentNumber);
-        currentNumber = 0;
-        display();
-    }
+    previousNumber = Number(currentNumber);
+    currentNumber = 0;
+    operation = input;
+    display();
 }
 
 function clearAll() {
-    previousNumber = 0;
-    currentNumber = 0;
+    previousNumber = null;
+    currentNumber = "0";
+    operation = null;
+    display();
+}
+
+function calculate() {
+    switch (operation) {
+        case '+':
+            currentNumber = previousNumber + Number(currentNumber);
+            break;
+        case "-":
+            currentNumber = previousNumber - Number(currentNumber);
+            break;
+        case "*":
+            currentNumber = previousNumber * Number(currentNumber);
+            break;
+        case "/":
+            currentNumber = previousNumber / Number(currentNumber);
+            break;
+    }
+    previousNumber = null;
+    operation = "=";
     display();
 }
 
