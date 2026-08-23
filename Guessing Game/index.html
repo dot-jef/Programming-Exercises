@@ -8,18 +8,34 @@
 </head>
 <body>
     <h1>Guessing Game</h1>
+
     <div id="guessingGame">
-        <div>
-            <h1>Guess the number from 1-100!</h1>
-            <h1 id="result">Start Guessing</h1>
+        <div id="homePage">
+            <button class="level">Easy</button>
+            <button class="level">Normal</button>
+            <button class="level">Hard</button>
+            <button class="level">Custom</button><br>
+            <label class="custom">Min:</label>
+            <input class="custom" type="number">
+            <label class="custom">Max:</label>
+            <input class="custom" type="number"><br>
+            <button id="start">Start</button>
         </div>
-        <input type="number" id="guessNumber" min="1" max="100">
-        <div id="buttons">
-            <button id="submitButton">Guess</button><br>
-            <button id="resetButton">Reset</button>
+        
+        <div id="theGame">
+            <button id="back">Back to level selection</button>
+            <div>
+                <h1 id="levelRange"></h1>
+                <h1 id="result">Start Guessing</h1>
+            </div>
+            <input type="number" id="guessNumber" min="1" max="100">
+            <div id="buttons">
+                <button id="submitButton">Guess</button><br>
+                <button id="resetButton">Reset</button>
+            </div>
+            <h1>Attempt(s):</h1>
+            <h1 id="attemptsCount">0</h1>
         </div>
-        <h1>Attempt(s):</h1>
-        <h1 id="attemptsCount">0</h1>
     </div>
 
     <script src="script.js"></script>

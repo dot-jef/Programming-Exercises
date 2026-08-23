@@ -8,6 +8,9 @@ body {
 }
 
 #guessingGame {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 50vh;
     width: 50vw;
     border: 1px solid black;
@@ -17,6 +20,7 @@ input, button {
     margin: 10px
 }
 
-.hidden {
-    display: none;
+.selected {
+    background-color: black;
+    color: white;
 }
