@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>To Do List</h1>
+    <div id="toDoList">
+        <div id="tasksList">
+            <div class="tasks">
+                <h3 class="status">Pending</h3>
+                <h2>Example Task 1</h2>
+                <p>the description of the task; what to do, when to do,</p>
+                <button class="markDone">Mark as Done</button>
+                <button class="editTask">Edit</button>
+                <button class="deleteTask">Delete</button>
+            </div>
+            <div class="tasks">
+                <h3 class="status">Pending</h3>
+                <h2>Example Task 2</h2>
+                <p>the description of the task; what to do, when to do,</p>
+                <button class="markDone">Mark as Done</button>
+                <button class="editTask">Edit</button>
+                <button class="deleteTask">Delete</button>
+            </div>
+            <div class="tasks">
+                <h3 class="status">Pending</h3>
+                <h2>Example Task 1</h2>
+                <p>the description of the task; what to do, when to do, WUDBJKNVEHADWGUVBKCJWNAIWDUAW WDBUIJKND AWUBD JKDSND AWUBJDKS AWKJDNC HEAKDJ ADNJKCEA</p>
+                <button class="markDone">Mark as Done</button>
+                <button class="editTask">Edit</button>
+                <button class="deleteTask">Delete</button>
+            </div>
+            <div class="tasks">
+                <h3 class="status">Pending</h3>
+                <h2>Example Task 1</h2>
+                <p>the description of the task; what to do, when to do,</p>
+                <button class="markDone">Mark as Done</button>
+                <button class="editTask">Edit</button>
+                <button class="deleteTask">Delete</button>
+            </div>
+            <div class="tasks">
+                <h3 class="status">Pending</h3>
+                <h2>Example Task 1</h2>
+                <p>the description of the task; what to do, when to do,</p>
+                <button class="markDone">Mark as Done</button>
+                <button class="editTask">Edit</button>
+                <button class="deleteTask">Delete</button>
+            </div>
+            <div class="tasks">
+                <h3 class="status">Pending</h3>
+                <h2>Example Task 1</h2>
+                <p>the description of the task; what to do, when to do,</p>
+                <button class="markDone">Mark as Done</button>
+                <button class="editTask">Edit</button>
+                <button class="deleteTask">Delete</button>
+            </div>
+            <div class="tasks">
+                <h3 class="status">Pending</h3>
+                <h2>Example Task 1</h2>
+                <p>the description of the task; what to do, when to do,</p>
+                <button class="markDone">Mark as Done</button>
+                <button class="editTask">Edit</button>
+                <button class="deleteTask">Delete</button>
+            </div>
+        </div>
+        <button id="addTaskButton">Add +</button>
+    </div>
+
+    <div id="taskModal" hidden>
+        <h1>Add Task</h1>
+        <div class="taskTitle">
+            <label>Title:</label>
+            <textarea id="modalTitle"></textarea>
+        </div>
+        <div class="taskDescription">
+            <label>Description</label>
+            <textarea id="modalDescription"></textarea>
+        </div>
+        <div class="taskModalButtons">
+            <button class="cancel">Close</button>
+            <button class="confirm">Add</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

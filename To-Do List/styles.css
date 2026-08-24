@@ -1,0 +1,90 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#toDoList {
+    width: 80%;
+    border: 1px solid black;
+    padding: 10px;
+}
+
+#tasksList {
+    height: 90%;
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.tasks {
+    margin: 10px;
+    padding: 10px;
+    width: 30%;
+    border: 1px solid black;
+}
+
+.editTask, .deleteTask, .status, #addTaskButton {
+    float: right;
+}
+
+button {
+    padding: 10px;
+    margin: 3px;
+    border-radius: 10%;
+}
+
+.editTask, .confirm {
+    color: white;
+    background-color: blue;
+}
+
+.deleteTask, .cancel {
+    color: white;
+    background-color: red;
+}
+
+#addTaskButton {
+    height: 50px;
+    width: 100px;
+}
+
+#taskModal {
+    background-color: white;
+    position: absolute;
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    border: 1px solid black;
+    height: 50%;
+    width: 60%;
+    padding: 2%;
+    gap: 10px;
+}
+
+.taskTitle, .taskDescription, textarea {
+    width: 100%;
+}
+
+.taskDescription {
+    height: 40%;
+    margin-bottom: 50px;
+}
+
+#modalDescription {
+    height: 100%;
+}
+
+.taskModalButtons {
+    justify-self: flex-end;
+    align-self: flex-end;
+}
+
+[hidden] {
+    display: none !important;
+}
