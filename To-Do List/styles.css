@@ -12,7 +12,7 @@ body {
 }
 
 #tasksList {
-    height: 90%;
+    height: 100%;
     width: 100%;
     display: flex;
     flex-flow: row wrap;
@@ -23,6 +23,7 @@ body {
 .tasks {
     margin: 10px;
     padding: 10px;
+    height: 20fr;
     width: 30%;
     border: 1px solid black;
 }
@@ -54,30 +55,41 @@ button {
 
 #taskModal {
     background-color: white;
-    position: absolute;
+    position: fixed;
     z-index: 999;
+    border: 1px solid black;
+    height: 50vh;
+    width: 60vw;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 2%;
+    text-align: center;
+}
+form {
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    border: 1px solid black;
-    height: 50%;
-    width: 60%;
-    padding: 2%;
     gap: 10px;
 }
 
-.taskTitle, .taskDescription, textarea {
+form, input, textarea {
     width: 100%;
+}
+
+form #modalTitle {
+    height: 10%;
+}
+
+form #modalDescription {
+    height: 60%;
 }
 
 .taskDescription {
     height: 40%;
     margin-bottom: 50px;
-}
-
-#modalDescription {
-    height: 100%;
 }
 
 .taskModalButtons {
