@@ -26,9 +26,6 @@ function displayTask() {
     });
 }
 
-function removeTask(id) {
-    tasks.pop()
-}
 function openAddModal() {
     taskModal.removeAttribute("hidden");
 }
@@ -63,16 +60,31 @@ modalCancel.forEach((button) => {
 });
 tasksList.addEventListener("click", (event) => {
     const deleteBtn = event.target.closest(".deleteBtn");
-    if (!deleteBtn) {return;}
-    if (confirm("are you sure to delete this task?")) {
+    if (deleteBtn) {
+        if (confirm("are you sure to delete this task?")) {
 
-        const targetedTask = deleteBtn.closest(".tasks")
+            const targetedTask = deleteBtn.closest(".tasks")
+            const targetId = Number(targetedTask.dataset.id);
+
+            tasks = tasks.filter(task => task.id != targetId);
+            displayTask();
+        }
+    }
+    
+
+    const markDoneBtn = event.target.closest(".markDone");
+    if (markDoneBtn) {
+        const targetedTask = markDoneBtn.closest(".tasks")
         const targetId = Number(targetedTask.dataset.id);
 
-        tasks = tasks.filter(task => task.id != targetId);
+        tasks = tasks.map(task => {
+            if (task.id === targetId) {
+               return {...task, status: "completed"};
+            }
+            return task;
+        });
         displayTask();
     }
-
 });
 
 displayTask();
