@@ -63,7 +63,7 @@ tasksList.addEventListener("click", (event) => {
     if (deleteBtn) {
         if (confirm("are you sure to delete this task?")) {
 
-            const targetedTask = deleteBtn.closest(".tasks")
+            const targetedTask = deleteBtn.closest(".tasks");
             const targetId = Number(targetedTask.dataset.id);
 
             tasks = tasks.filter(task => task.id != targetId);
@@ -74,7 +74,7 @@ tasksList.addEventListener("click", (event) => {
 
     const markDoneBtn = event.target.closest(".markDone");
     if (markDoneBtn) {
-        const targetedTask = markDoneBtn.closest(".tasks")
+        const targetedTask = markDoneBtn.closest(".tasks");
         const targetId = Number(targetedTask.dataset.id);
 
         tasks = tasks.map(task => {
@@ -84,6 +84,17 @@ tasksList.addEventListener("click", (event) => {
             return task;
         });
         displayTask();
+    }
+
+
+    const editBtn = event.target.closest(".editTask");
+    if (editBtn) {
+        const targetedTask = editBtn.closest(".tasks");
+        const targetId = Number(targetedTask.dataset.id);
+
+        taskModal.removeAttribute("hidden");
+        taskModal.querySelector("h1").textContent = "Edit Task";
+        
     }
 });
 
