@@ -9,6 +9,7 @@ let tasks = [
     {id: 2, title: "No Title", description: "wala lang example lang bakit ba", status: "completed"}
 ];
 const form = document.getElementById("taskForm");
+let isEdit = false;
 
 
 function displayTask() {
@@ -20,13 +21,17 @@ function displayTask() {
                 <h2 class="taskTitle">${task.title}</h2>
                 <p class="taskDescription">${task.description}</p>
                 ${task.status === "pending" ? `<button class="markDone">Mark as Done</button>`: ""}
-                <button class="editTask">Edit</button>
+                ${task.status === "pending" ? `<button class="editTask">Edit</button>`: ""}
                 <button class="deleteBtn">Delete</button>
             </div>`);
     });
 }
 
 function openAddModal() {
+    isEdit = false;
+    form.reset();
+    taskModal.querySelector("h1").textContent = "Add Task";
+    taskModal.querySelector(".confirm").textContent = "Add";
     taskModal.removeAttribute("hidden");
 }
 
@@ -40,19 +45,37 @@ form.addEventListener("submit", (event) => {
 
     const formData = new FormData(form);
     const ObjectedFormData = Object.fromEntries(formData);
+    if (isEdit) {
+        if (ObjectedFormData.title || ObjectedFormData.description) {
+            tasks = tasks.map(task => {
+                if (task.id === Number(ObjectedFormData.id)) {
+                    return {...task, title: ObjectedFormData.title || "No Title", description: ObjectedFormData.description || "No Description"};
+                }
+                return task;
+            });
 
-    if (ObjectedFormData.title || ObjectedFormData.description) {
-        ObjectedFormData.id = tasks.length > 0 ? tasks[tasks.length - 1].id + 1 : 1;
-        !ObjectedFormData.title ? ObjectedFormData.title = "No Title" : "";
-        !ObjectedFormData.description ? ObjectedFormData.description = "No Description" : "";
-        tasks.push(ObjectedFormData);
-
-        displayTask();
-        closeModal();
-        form.reset();
+        } else {
+            alert("You must put a title or description");
+            return;
+        }
     } else {
-        alert("You must put a title or description");
+        if (ObjectedFormData.title || ObjectedFormData.description) {
+            ObjectedFormData.id = tasks.length > 0 ? tasks[tasks.length - 1].id + 1 : 1;
+            !ObjectedFormData.title ? ObjectedFormData.title = "No Title" : "";
+            !ObjectedFormData.description ? ObjectedFormData.description = "No Description" : "";
+            tasks.push(ObjectedFormData);
+
+        } else {
+            alert("You must put a title or description");
+            return;
+        }
     }
+    
+    displayTask();
+    closeModal();
+    form.reset();
+
+    
 });
 addButton.addEventListener("click", () => openAddModal());
 modalCancel.forEach((button) => {
@@ -91,10 +114,18 @@ tasksList.addEventListener("click", (event) => {
     if (editBtn) {
         const targetedTask = editBtn.closest(".tasks");
         const targetId = Number(targetedTask.dataset.id);
+        isEdit = true;
 
-        taskModal.removeAttribute("hidden");
         taskModal.querySelector("h1").textContent = "Edit Task";
-        
+        taskModal.querySelector(".confirm").textContent = "Edit";
+        const targetTask = tasks.find(task => task.id === targetId);
+        Object.keys(targetTask).forEach(key => {
+            const input = form.querySelector(`[name=${key}]`);
+            if (input) {
+                input.value = targetTask[key];
+            }
+        });
+        taskModal.removeAttribute("hidden");
     }
 });
 
