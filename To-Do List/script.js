@@ -4,13 +4,9 @@ const tasksList = document.getElementById("tasksList");
 const toDoList = document.getElementById("toDoList");
 const taskModal = document.getElementById("taskModal");
 const modalCancel = document.querySelectorAll(".cancel");
-let tasks = [
-    {id: 1, title: "Bili sibuyas", description: "bumili ka ng sampung sibuyas bukas babayaran", status: "pending"},
-    {id: 2, title: "No Title", description: "wala lang example lang bakit ba", status: "completed"}
-];
+let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 const form = document.getElementById("taskForm");
 let isEdit = false;
-
 
 function displayTask() {
     tasksList.innerHTML = "";
@@ -49,7 +45,7 @@ form.addEventListener("submit", (event) => {
         if (ObjectedFormData.title || ObjectedFormData.description) {
             tasks = tasks.map(task => {
                 if (task.id === Number(ObjectedFormData.id)) {
-                    return {...task, title: ObjectedFormData.title || "No Title", description: ObjectedFormData.description || "No Description"};
+                    return {...task, id: Number(ObjectedFormData.id) , title: ObjectedFormData.title || "No Title", description: ObjectedFormData.description || "No Description"};
                 }
                 return task;
             });
@@ -60,7 +56,7 @@ form.addEventListener("submit", (event) => {
         }
     } else {
         if (ObjectedFormData.title || ObjectedFormData.description) {
-            ObjectedFormData.id = tasks.length > 0 ? tasks[tasks.length - 1].id + 1 : 1;
+            ObjectedFormData.id = Date.now();
             !ObjectedFormData.title ? ObjectedFormData.title = "No Title" : "";
             !ObjectedFormData.description ? ObjectedFormData.description = "No Description" : "";
             tasks.push(ObjectedFormData);
@@ -71,11 +67,10 @@ form.addEventListener("submit", (event) => {
         }
     }
     
+    localStorage.setItem("tasks", JSON.stringify(tasks));
     displayTask();
     closeModal();
     form.reset();
-
-    
 });
 addButton.addEventListener("click", () => openAddModal());
 modalCancel.forEach((button) => {
@@ -90,6 +85,7 @@ tasksList.addEventListener("click", (event) => {
             const targetId = Number(targetedTask.dataset.id);
 
             tasks = tasks.filter(task => task.id != targetId);
+            localStorage.setItem("tasks", JSON.stringify(tasks));
             displayTask();
         }
     }
@@ -106,6 +102,7 @@ tasksList.addEventListener("click", (event) => {
             }
             return task;
         });
+        localStorage.setItem("tasks", JSON.stringify(tasks));
         displayTask();
     }
 
