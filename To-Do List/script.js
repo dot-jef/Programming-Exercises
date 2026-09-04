@@ -7,21 +7,55 @@ const modalCancel = document.querySelectorAll(".cancel");
 let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 const form = document.getElementById("taskForm");
 let isEdit = false;
+const filter = document.getElementById("filter");
+let filterStatus = filter.value;
 
 function displayTask() {
     tasksList.innerHTML = "";
-    tasks.forEach(task => {
-        tasksList.insertAdjacentHTML("beforeend", `
-            <div data-id="${task.id}" class="tasks">
-                <h3 class="status">${task.status}</h3>
-                <h2 class="taskTitle">${task.title}</h2>
-                <p class="taskDescription">${task.description}</p>
-                ${task.status === "pending" ? `<button class="markDone">Mark as Done</button>`: ""}
-                ${task.status === "pending" ? `<button class="editTask">Edit</button>`: ""}
-                <button class="deleteBtn">Delete</button>
-            </div>`);
-    });
+    switch(filterStatus) {
+        case "all":
+            tasks.forEach(task => {
+                tasksList.insertAdjacentHTML("beforeend", `
+                    <div data-id="${task.id}" class="tasks">
+                        <h3 class="status">${task.status}</h3>
+                        <h2 class="taskTitle">${task.title}</h2>
+                        <p class="taskDescription">${task.description}</p>
+                        ${task.status === "pending" ? `<button class="markDone">Mark as Done</button>`: ""}
+                        ${task.status === "pending" ? `<button class="editTask">Edit</button>`: ""}
+                        <button class="deleteBtn">Delete</button>
+                    </div>`);
+            });
+            break;
+        case "pending":
+            tasks.filter(task => task.status === "pending").forEach(task => {
+                tasksList.insertAdjacentHTML("beforeend", `
+                    <div data-id="${task.id}" class="tasks">
+                        <h3 class="status">${task.status}</h3>
+                        <h2 class="taskTitle">${task.title}</h2>
+                        <p class="taskDescription">${task.description}</p>
+                        ${task.status === "pending" ? `<button class="markDone">Mark as Done</button>`: ""}
+                        ${task.status === "pending" ? `<button class="editTask">Edit</button>`: ""}
+                        <button class="deleteBtn">Delete</button>
+                    </div>`);
+            });
+            break;
+        case "completed":
+            tasks.filter(task => task.status === "completed").forEach(task => {
+                tasksList.insertAdjacentHTML("beforeend", `
+                    <div data-id="${task.id}" class="tasks">
+                        <h3 class="status">${task.status}</h3>
+                        <h2 class="taskTitle">${task.title}</h2>
+                        <p class="taskDescription">${task.description}</p>
+                        ${task.status === "pending" ? `<button class="markDone">Mark as Done</button>`: ""}
+                        ${task.status === "pending" ? `<button class="editTask">Edit</button>`: ""}
+                        <button class="deleteBtn">Delete</button>
+                    </div>`);
+            });
+            break;
+    }
+    
 }
+
 
 function openAddModal() {
     isEdit = false;
@@ -124,6 +158,12 @@ tasksList.addEventListener("click", (event) => {
         });
         taskModal.removeAttribute("hidden");
     }
+});
+
+filter.addEventListener("change", () => {
+    filterStatus = filter.value;
+    console.log(filterStatus);
+    displayTask();
 });
 
 displayTask();
