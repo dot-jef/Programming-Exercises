@@ -1,7 +1,6 @@
 
 const addButton = document.getElementById("addTaskButton");
 const tasksList = document.getElementById("tasksList");
-const toDoList = document.getElementById("toDoList");
 const taskModal = document.getElementById("taskModal");
 const modalCancel = document.querySelectorAll(".cancel");
 let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
