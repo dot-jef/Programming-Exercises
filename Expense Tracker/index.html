@@ -27,7 +27,7 @@
             <div>
                 <p class="eyebrow">SEPTEMBER 2026</p>
                 <h1 id="page-title">Good morning, Esteron.</h1>
-                <p class="subheading">Here’s a clear view of your spending this month.</p>
+                <p class="subheading">Here's a clear view of your spending this month.</p>
             </div>
             <button class="add-expense" type="button"><span aria-hidden="true">+</span>Add expense</button>
         </section>
@@ -97,5 +97,58 @@
             </div>
         </section>
     </main>
+
+    <!-- Static modal design: connect its visibility and controls with JavaScript later. -->
+    <aside class="modal-backdrop" aria-labelledby="expense-modal-title" aria-modal="true" role="dialog" hidden>
+        <section class="expense-modal">
+            <header class="modal-header">
+                <div>
+                    <p class="modal-kicker">NEW TRANSACTION</p>
+                    <h2 id="expense-modal-title">Add an expense</h2>
+                    <p>Record a purchase to keep your budget up to date.</p>
+                </div>
+                <button class="close-modal" type="button" aria-label="Close add expense modal">x</button>
+            </header>
+
+            <div class="modal-form">
+                <label class="field field-full">
+                    <span>Expense name</span>
+                    <input type="text" placeholder="e.g. Weekly groceries">
+                </label>
+
+                <label class="field">
+                    <span>Amount</span>
+                    <span class="input-with-prefix"><b>$</b><input type="text" placeholder="0.00"></span>
+                </label>
+
+                <label class="field">
+                    <span>Category</span>
+                    <span class="select-display">Choose a category <b aria-hidden="true">⌄</b></span>
+                </label>
+
+                <label class="field">
+                    <span>Date</span>
+                    <span class="date-display"><span>Sep 8, 2026</span><b aria-hidden="true">□</b></span>
+                </label>
+
+                <label class="field">
+                    <span>Payment method</span>
+                    <span class="select-display">Card payment <b aria-hidden="true">⌄</b></span>
+                </label>
+
+                <label class="field field-full">
+                    <span>Notes <em>Optional</em></span>
+                    <textarea placeholder="Add a note about this expense"></textarea>
+                </label>
+            </div>
+
+            <footer class="modal-actions">
+                <button class="cancel-button" type="button">Cancel</button>
+                <button class="save-expense" type="button"><span aria-hidden="true">+</span> Add expense</button>
+            </footer>
+        </section>
+    </aside>
+
+<script src="script.js"></script>
 </body>
 </html>

@@ -45,7 +45,7 @@ h1 { font-size: clamp(1.75rem, 3.5vw, 2.4rem); letter-spacing: -.055em; line-hei
 
 .summary-grid { display: grid; grid-template-columns: 1.65fr 1fr 1fr; gap: 18px; margin-bottom: 18px; }
 .balance-card, .stat-card, .panel { border: 1px solid var(--line); border-radius: 14px; background: var(--surface); box-shadow: var(--shadow); }
-.balance-card { position: relative; min-height: 162px; ovferflow: hidden; padding: 21px 22px; border: 0; background: var(--green); color: #fff; }
+.balance-card { position: relative; min-height: 162px; overflow: hidden; padding: 21px 22px; border: 0; background: var(--green); color: #fff; }
 .card-heading { justify-content: space-between; color: #d8f0e2; font-size: .78rem; font-weight: 650; }
 .balance { position: relative; z-index: 1; margin: 18px 0 7px; font-size: 2rem; font-weight: 800; letter-spacing: -.06em; }
 .balance-note { position: relative; z-index: 1; color: #c6e8d2; font-size: .73rem; }
@@ -118,6 +118,115 @@ td small { margin-top: 3px; color: #9aa59e; font-size: .66rem; }
 .amount { color: #26332c; font-weight: 750; }
 .amount.income { color: var(--green); }
 
+.modal-backdrop {
+    position: fixed;
+    z-index: 10;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    padding: 24px;
+    background: rgba(14, 29, 20, .48);
+    backdrop-filter: blur(3px);
+}
+
+.modal-backdrop[hidden] {
+    display: none !important;
+}
+
+.expense-modal {
+    width: min(100%, 540px);
+    max-height: calc(100dvh - 48px);
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, .65);
+    border-radius: 16px;
+    background: var(--surface);
+    box-shadow: 0 24px 70px rgba(9, 24, 14, .28);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 24px 25px 19px;
+    border-bottom: 1px solid var(--line);
+}
+
+.modal-kicker {
+    margin: 0 0 7px;
+    color: var(--green);
+    font-size: .65rem;
+    font-weight: 800;
+    letter-spacing: .12em;
+}
+
+.modal-header h2 { font-size: 1.28rem; }
+.modal-header p:last-child { margin: 6px 0 0; color: var(--muted); font-size: .78rem; }
+
+.close-modal {
+    display: grid;
+    width: 31px;
+    height: 31px;
+    flex: none;
+    place-items: center;
+    padding: 0;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: #fff;
+    color: #748078;
+    font-size: 1.35rem;
+    font-weight: 300;
+    line-height: 1;
+}
+
+.modal-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    padding: 22px 25px 24px;
+}
+
+.field { display: grid; gap: 7px; min-width: 0; }
+.field-full { grid-column: span 2; }
+.field > span:first-child { color: #445149; font-size: .73rem; font-weight: 750; }
+.field em { margin-left: 4px; color: #98a29c; font-size: .66rem; font-style: normal; font-weight: 500; }
+
+.field input,
+.field textarea,
+.select-display,
+.date-display {
+    width: 100%;
+    border: 1px solid #dce3de;
+    border-radius: 8px;
+    background: #fff;
+    color: #314138;
+    font: inherit;
+    font-size: .78rem;
+}
+
+.field input,
+.select-display,
+.date-display { min-height: 40px; padding: 0 11px; }
+.field input::placeholder,
+.field textarea::placeholder { color: #9ca69f; opacity: 1; }
+.field input:focus,
+.field textarea:focus { outline: none; }
+
+.input-with-prefix { position: relative; }
+.input-with-prefix b { position: absolute; z-index: 1; top: 50%; left: 12px; color: #718078; font-size: .78rem; transform: translateY(-50%); }
+.input-with-prefix input { padding-left: 27px; }
+.select-display,
+.date-display { display: flex; align-items: center; justify-content: space-between; color: #69766e; }
+.select-display b,
+.date-display b { color: #718078; font-size: .88rem; font-weight: 500; }
+.date-display span { color: #314138; }
+
+.field textarea { display: block; height: 72px; padding: 11px; resize: none; }
+.modal-actions { display: flex; justify-content: flex-end; gap: 10px; padding: 16px 25px; border-top: 1px solid var(--line); background: #fbfcfb; }
+.cancel-button, .save-expense { min-height: 38px; padding: 0 13px; border-radius: 8px; font-size: .76rem; font-weight: 750; }
+.cancel-button { border: 1px solid #dce3de; background: #fff; color: #526058; }
+.save-expense { display: inline-flex; align-items: center; gap: 6px; border: 0; background: var(--green); color: #fff; box-shadow: 0 5px 12px rgba(27, 121, 81, .17); }
+.save-expense span { font-size: 1.1rem; font-weight: 400; }
+
 @media (max-width: 800px) {
     .summary-grid { grid-template-columns: 1fr 1fr; }
     .balance-card { grid-column: span 2; }
@@ -140,4 +249,11 @@ td small { margin-top: 3px; color: #9aa59e; font-size: .66rem; }
     .table-wrap { margin-right: -17px; margin-left: -17px; }
     th, td { padding-right: 17px; padding-left: 17px; }
     .transaction-heading { align-items: flex-start; flex-direction: column; }
+    .modal-backdrop { align-items: end; padding: 12px; }
+    .expense-modal { max-height: calc(100dvh - 24px); overflow-y: auto; }
+    .modal-header { padding: 20px 18px 17px; }
+    .modal-form { gap: 13px; padding: 18px; }
+    .field { grid-column: span 2; }
+    .modal-actions { padding: 14px 18px; }
+    .cancel-button, .save-expense { flex: 1; justify-content: center; }
 }
