@@ -10,9 +10,9 @@
 <body>
     <main class="app-shell">
         <header class="topbar">
-            <div class="brand" aria-label="Pennywise">
-                <span class="brand-mark" aria-hidden="true">$</span>
-                <span>Pennywise</span>
+            <div class="brand" aria-label="Expense Tracker">
+                <span class="brand-mark" aria-hidden="true">₱</span>
+                <span>Expense Tracker</span>
             </div>
             <div class="profile">
                 <div class="avatar" aria-hidden="true">E</div>
@@ -25,32 +25,45 @@
 
         <section class="welcome-row" aria-labelledby="page-title">
             <div>
-                <p class="eyebrow">SEPTEMBER 2026</p>
-                <h1 id="page-title">Good morning, Esteron.</h1>
-                <p class="subheading">Here's a clear view of your spending this month.</p>
+                <p class="eyebrow">PERSONAL FINANCE</p>
+                <h1 id="page-title">Expense Tracker</h1>
+                <p class="subheading">Keep your spending organized and up to date.</p>
             </div>
             <button class="add-expense" type="button"><span aria-hidden="true">+</span>Add expense</button>
         </section>
 
-        <!-- <section class="summary-grid" aria-label="Monthly summary">
-            <article class="balance-card">
-                <div class="card-heading"><p>Available balance</p><span aria-label="More options">•••</span></div>
-                <p class="balance">$2,840.50</p>
+        <section class="summary-grid" aria-label="Monthly summary">
+            <article class="expenses-card">
+                <div class="card-heading"><p>Total expenses</p><span aria-label="More options">•••</span></div>
+                <p class="balance">₱2,840.50</p>
                 <p class="balance-note"><span class="up-arrow" aria-hidden="true">↗</span>8.4% more than last month</p>
                 <i class="decoration decoration-one" aria-hidden="true"></i>
                 <i class="decoration decoration-two" aria-hidden="true"></i>
             </article>
 
             <article class="stat-card">
-                <div class="stat-icon income-icon" aria-hidden="true">↙</div>
-                <div><p class="stat-label">Income</p><p class="stat-value">$4,200.00</p><p class="stat-change positive">+12.5% <span>vs. August</span></p></div>
+                <div class="stat-icon income-icon" aria-hidden="true">◷</div>
+                <div><p class="stat-label">Current month</p><p class="stat-value">September 2026</p><p class="stat-change positive">Active period</p></div>
             </article>
 
             <article class="stat-card">
-                <div class="stat-icon expense-icon" aria-hidden="true">↗</div>
-                <div><p class="stat-label">Expenses</p><p class="stat-value">$1,359.50</p><p class="stat-change negative">+4.2% <span>vs. August</span></p></div>
+                <div class="stat-icon expense-icon" aria-hidden="true">#</div>
+                <div><p class="stat-label">Number of expenses</p><p class="stat-value">12</p><p class="stat-change negative">This month</p></div>
             </article>
-        </section> -->
+        </section>
+
+        <section class="filter-panel panel" aria-labelledby="filter-title">
+            <div class="filter-heading">
+                <div><h2 id="filter-title">Find an expense</h2><p>Filter your records by category or date.</p></div>
+                <span class="filter-status">12 records</span>
+            </div>
+            <div class="filter-form">
+                <label class="filter-field"><span>Category</span><select><option>All categories</option><option>Food &amp; dining</option><option>Transport</option><option>Shopping</option><option>Bills &amp; utilities</option></select></label>
+                <label class="filter-field"><span>Start date</span><input type="date"></label>
+                <label class="filter-field"><span>End date</span><input type="date"></label>
+                <button class="filter-submit" type="button"><span aria-hidden="true">⌕</span>Filter expenses</button>
+            </div>
+        </section>
 
         <section class="content-grid">
             <article class="panel spending-panel">
@@ -59,11 +72,11 @@
                     <button class="period-button" type="button">This month <span aria-hidden="true">⌄</span></button>
                 </div>
                 <div class="chart-area" role="img" aria-label="A weekly spending bar chart. Spending rises from week one to week three then falls in week four.">
-                    <div class="chart-y-axis" aria-hidden="true"><span>$600</span><span>$400</span><span>$200</span><span>$0</span></div>
+                    <div class="chart-y-axis" aria-hidden="true"><span>₱600</span><span>₱400</span><span>₱200</span><span>₱0</span></div>
                     <div class="chart-bars" aria-hidden="true">
                         <div class="bar-group"><div class="bar" style="height: 42%;"></div><span>Week 1</span></div>
                         <div class="bar-group"><div class="bar" style="height: 64%;"></div><span>Week 2</span></div>
-                        <div class="bar-group"><div class="bar bar-highlight" style="height: 86%;"><b>$520</b></div><span>Week 3</span></div>
+                        <div class="bar-group"><div class="bar bar-highlight" style="height: 86%;"><b>₱520</b></div><span>Week 3</span></div>
                         <div class="bar-group"><div class="bar" style="height: 55%;"></div><span>Week 4</span></div>
                     </div>
                 </div>
@@ -72,31 +85,31 @@
             <article class="panel category-panel">
                 <div class="panel-header"><div><h2>Top categories</h2><p>Where your money went</p></div><button class="text-button" type="button">View all</button></div>
                 <ul class="category-list">
-                    <li><span class="category-icon food" aria-hidden="true">⌁</span><span class="category-name">Food &amp; dining</span><span class="category-amount">$452.80</span><span class="category-share">33%</span></li>
-                    <li><span class="category-icon transport" aria-hidden="true">↔</span><span class="category-name">Transport</span><span class="category-amount">$238.20</span><span class="category-share">18%</span></li>
-                    <li><span class="category-icon shopping" aria-hidden="true">□</span><span class="category-name">Shopping</span><span class="category-amount">$184.50</span><span class="category-share">14%</span></li>
-                    <li><span class="category-icon bills" aria-hidden="true">⌂</span><span class="category-name">Bills &amp; utilities</span><span class="category-amount">$175.00</span><span class="category-share">13%</span></li>
+                    <li><span class="category-icon food" aria-hidden="true">⌁</span><span class="category-name">Food &amp; dining</span><span class="category-amount">₱452.80</span><span class="category-share">33%</span></li>
+                    <li><span class="category-icon transport" aria-hidden="true">↔</span><span class="category-name">Transport</span><span class="category-amount">₱238.20</span><span class="category-share">18%</span></li>
+                    <li><span class="category-icon shopping" aria-hidden="true">□</span><span class="category-name">Shopping</span><span class="category-amount">₱184.50</span><span class="category-share">14%</span></li>
+                    <li><span class="category-icon bills" aria-hidden="true">⌂</span><span class="category-name">Bills &amp; utilities</span><span class="category-amount">₱175.00</span><span class="category-share">13%</span></li>
                 </ul>
             </article>
         </section>
 
         <section class="panel transactions-panel" aria-labelledby="transactions-title">
             <div class="panel-header transaction-heading">
-                <div><h2 id="transactions-title">Recent transactions</h2><p>A snapshot of your latest expenses</p></div>
+                <div><h2 id="transactions-title">Expense list</h2><p>Your latest recorded expenses</p></div>
                 <div class="transaction-actions"><button class="filter-button" type="button"><span aria-hidden="true">☷</span> Filter</button><button class="text-button" type="button">View all</button></div>
             </div>
             <div class="table-wrap">
                 <table>
-                    <thead><tr><th scope="col">Transaction</th><th scope="col">Category</th><th scope="col">Date</th><th scope="col">Amount</th></tr></thead>
-                    <tbody>
-                        <tr><td><span class="merchant-icon cafe" aria-hidden="true">☕</span><span><strong>The Daily Grind</strong><small>Card payment</small></span></td><td><span class="pill pill-food">Food &amp; dining</span></td><td>Sep 6, 2026</td><td class="amount">−$12.50</td></tr>
-                        <tr><td><span class="merchant-icon train" aria-hidden="true">↔</span><span><strong>City Metro</strong><small>Card payment</small></span></td><td><span class="pill pill-transport">Transport</span></td><td>Sep 5, 2026</td><td class="amount">−$3.20</td></tr>
-                        <tr><td><span class="merchant-icon salary" aria-hidden="true">$</span><span><strong>Acme Studio</strong><small>Bank transfer</small></span></td><td><span class="pill pill-income">Income</span></td><td>Sep 1, 2026</td><td class="amount income">+$4,200.00</td></tr>
+                    <thead><tr><th scope="col">Description</th><th scope="col">Category</th><th scope="col">Date</th><th scope="col">Amount</th><th scope="col"><span class="visually-hidden">Actions</span></th></tr></thead>
+                    <tbody class="expense-list">
+                        <!--THIS IS WHERE THE EXPENSES WILL DISPLAY-->
                     </tbody>
                 </table>
+                <div class="empty-state" hidden><span class="empty-icon" aria-hidden="true">₱</span><h3>No expenses yet</h3><p>Add your first expense to start tracking your spending.</p><button class="empty-action" type="button">Add expense</button></div>
             </div>
         </section>
     </main>
+
 
     <!-- Static modal design: connect its visibility and controls with JavaScript later. -->
     <aside class="modal-backdrop" aria-labelledby="expense-modal-title" aria-modal="true" role="dialog" hidden>
@@ -118,7 +131,7 @@
 
                 <label class="field">
                     <span>Amount</span>
-                    <span class="input-with-prefix"><b>$</b><input type="text" placeholder="0.00"></span>
+                    <span class="input-with-prefix"><b>₱</b><input type="text" placeholder="0.00"></span>
                 </label>
 
                 <label class="field">
