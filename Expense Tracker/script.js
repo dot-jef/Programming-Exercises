@@ -1,9 +1,11 @@
+
 const addExpense = document.querySelectorAll(".add-expense, .empty-action");
 const modalBackdrop = document.querySelector(".modal-backdrop");
 const closeModal = document.querySelectorAll(".close-modal, .cancel-button");
 const expenseList = document.querySelector(".expense-list");
 const emptyState = document.querySelector(".empty-state");
 const balance = document.querySelector(".balance");
+const currentMonth = new Date().getMonth() + 1;
 const expenses = [
     {id: 1, description: "Fudgee Bar", category: "Food & Dining", amount: 16.75, date: "2026-09-09"},
     {id: 1, description: "Fudgee Bar", category: "Food & Dining", amount: 16.75, date: "2026-09-09"},
@@ -47,3 +49,4 @@ closeModal.forEach(button => {
 });
 
 display();
+console.log(currentMonth);
