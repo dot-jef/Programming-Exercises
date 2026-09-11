@@ -7,13 +7,13 @@ const emptyState = document.querySelector(".empty-state");
 const balance = document.querySelector(".balance");
 const currentMonth = new Date().getMonth() + 1;
 const expenses = [
-    {id: 1, description: "Fudgee Bar", category: "Food & Dining", amount: 16.75, date: "2026-09-09"},
-    {id: 1, description: "Fudgee Bar", category: "Food & Dining", amount: 16.75, date: "2026-09-09"},
-    {id: 1, description: "Fudgee Bar", category: "Food & Dining", amount: 16.75, date: "2026-09-09"},
-    {id: 1, description: "Fudgee Bar", category: "Food & Dining", amount: 16.75, date: "2026-09-09"},
-    {id: 1, description: "Fudgee Bar", category: "Food & Dining", amount: 16.75, date: "2026-09-09"},
-    {id: 1, description: "Fudgee Bar", category: "Food & Dining", amount: 16.75, date: "2026-09-09"},
-    {id: 1, description: "Fudgee Bar", category: "Food & Dining", amount: 16.75, date: "2026-09-09"}
+    {id: 1, name: "Fudgee Bar", category: "Food", amount: 16.75, date: "2026-09-09"},
+    {id: 2, name: "Fudgee Bar", category: "Food", amount: 16.75, date: "2026-09-09"},
+    {id: 3, name: "Fudgee Bar", category: "Food", amount: 16.75, date: "2026-09-09"},
+    {id: 4, name: "Fudgee Bar", category: "Food", amount: 16.75, date: "2026-09-09"},
+    {id: 5, name: "Fudgee Bar", category: "Food", amount: 16.75, date: "2026-09-09"},
+    {id: 6, name: "Fudgee Bar", category: "Food", amount: 16.75, date: "2026-09-09"},
+    {id: 7, name: "Fudgee Bar", category: "Food", amount: 16.75, date: "2026-09-09"}
 ];
 
 function display() {
@@ -28,7 +28,7 @@ function display() {
         emptyState.setAttribute("hidden", "");
         expenses.forEach(expense => {
             expenseList.insertAdjacentHTML("beforeend", 
-                `<tr><td><span><strong>${expense.description}</strong></span></td><td><span class="pill pill-food">${expense.category}</span></td><td>${expense.date}</td><td class="amount">₱${expense.amount}</td><td class="row-actions"><button class="edit-button" type="button">Edit</button><button class="delete-button" type="button">Delete</button></td></tr>`
+                `<tr><td><span><strong>${expense.name}</strong></span></td><td><span class="pill pill-food">${expense.category}</span></td><td>${expense.date}</td><td class="amount">₱${expense.amount}</td><td class="row-actions"><button class="edit-button" type="button">Edit</button><button class="delete-button" type="button">Delete</button></td></tr>`
             )
         })
     }

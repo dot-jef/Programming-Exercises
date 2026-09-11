@@ -35,7 +35,7 @@
         <section class="summary-grid" aria-label="Monthly summary">
             <article class="expenses-card">
                 <div class="card-heading"><p>Total expenses</p><span aria-label="More options">•••</span></div>
-                <p class="balance">₱2,840.50</p>
+                <p class="balance">₱0.00</p>
                 <p class="balance-note"><span class="up-arrow" aria-hidden="true">↗</span>8.4% more than last month</p>
                 <i class="decoration decoration-one" aria-hidden="true"></i>
                 <i class="decoration decoration-two" aria-hidden="true"></i>
@@ -100,7 +100,7 @@
             </div>
             <div class="table-wrap">
                 <table>
-                    <thead><tr><th scope="col">Description</th><th scope="col">Category</th><th scope="col">Date</th><th scope="col">Amount</th><th scope="col"><span class="visually-hidden">Actions</span></th></tr></thead>
+                    <thead><tr><th scope="col">Name</th><th scope="col">Category</th><th scope="col">Date</th><th scope="col">Amount</th><th scope="col"><span class="visually-hidden">Actions</span></th></tr></thead>
                     <tbody class="expense-list">
                         <!--THIS IS WHERE THE EXPENSES WILL DISPLAY-->
                     </tbody>
@@ -126,27 +126,29 @@
             <div class="modal-form">
                 <label class="field field-full">
                     <span>Expense name</span>
-                    <input type="text" placeholder="e.g. Weekly groceries">
+                    <input type="text" name="name" placeholder="e.g. Weekly groceries">
                 </label>
 
                 <label class="field">
                     <span>Amount</span>
-                    <span class="input-with-prefix"><b>₱</b><input type="text" placeholder="0.00"></span>
+                    <span class="input-with-prefix"><b>₱</b><input type="number" step="1" name="amount" placeholder="0.00"></span>
                 </label>
 
                 <label class="field">
                     <span>Category</span>
-                    <span class="select-display">Choose a category <b aria-hidden="true">⌄</b></span>
+                    <span class="select-display"><select name="category">
+                        <option selected disabled>Select Category</option>
+                        <option value="Utilities">Utilities</option>
+                        <option value="Food">Food</option>
+                        <option value="Transportation">Transportation</option>
+                        <option value="Healthcare">Healthcare</option>
+                        <option value="Debt Payment">Debt Payment</option>
+                    </select></span>
                 </label>
 
                 <label class="field">
                     <span>Date</span>
-                    <span class="date-display"><span>Sep 8, 2026</span><b aria-hidden="true">□</b></span>
-                </label>
-
-                <label class="field">
-                    <span>Payment method</span>
-                    <span class="select-display">Card payment <b aria-hidden="true">⌄</b></span>
+                    <span class="date-display"><input type="date"></span>
                 </label>
 
                 <label class="field field-full">
