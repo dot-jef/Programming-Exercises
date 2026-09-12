@@ -123,7 +123,7 @@
                 <button class="close-modal" type="button" aria-label="Close add expense modal">x</button>
             </header>
 
-            <div class="modal-form">
+            <form class="modal-form">
                 <label class="field field-full">
                     <span>Expense name</span>
                     <input type="text" name="name" placeholder="e.g. Weekly groceries">
@@ -131,7 +131,7 @@
 
                 <label class="field">
                     <span>Amount</span>
-                    <span class="input-with-prefix"><b>₱</b><input type="number" step="1" name="amount" placeholder="0.00"></span>
+                    <span class="input-with-prefix"><b>₱</b><input type="number" min="0" step="1" name="amount" placeholder="0.00"></span>
                 </label>
 
                 <label class="field">
@@ -148,19 +148,19 @@
 
                 <label class="field">
                     <span>Date</span>
-                    <span class="date-display"><input type="date"></span>
+                    <span class="date-display"><input type="date" name="date"></span>
                 </label>
 
                 <label class="field field-full">
                     <span>Notes <em>Optional</em></span>
                     <textarea placeholder="Add a note about this expense"></textarea>
                 </label>
-            </div>
 
-            <footer class="modal-actions">
-                <button class="cancel-button" type="button">Cancel</button>
-                <button class="save-expense" type="button"><span aria-hidden="true">+</span> Add expense</button>
-            </footer>
+                <footer class="modal-actions">
+                    <button class="cancel-button" type="button">Cancel</button>
+                    <button class="save-expense" type="submit"><span aria-hidden="true">+</span> Add expense</button>
+                </footer>
+            </form>
         </section>
     </aside>
 
