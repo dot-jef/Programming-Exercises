@@ -11,21 +11,30 @@ const currentMonth = new Date().getMonth() + 1;
 let expenses = JSON.parse(localStorage.getItem("expenses")) || [];
 
 function display() {
+    expenseList.innerHTML = '';
+    expenseCount.textContent = expenses.length;
+    balance.textContent = `${expenses.reduce((acc, cur) => {
+        return Number(acc) + Number(cur.amount);
+    }, 0)}`
+
     if (expenses.length === 0) {
         emptyState.removeAttribute("hidden");
         return;
     }
 
-    balance.textContent = `${expenses.reduce((acc, cur) => {
-        return Number(acc) + Number(cur.amount);
-    }, 0)}`
-    expenseCount.textContent = expenses.length;
-    expenseList.innerHTML = '';
-    
     emptyState.setAttribute("hidden", "");
     expenses.forEach(expense => {
         expenseList.insertAdjacentHTML("beforeend", 
-            `<tr><td><span><strong>${expense.name}</strong></span></td><td><span class="pill pill-food">${expense.category}</span></td><td>${expense.date}</td><td class="amount">₱${expense.amount}</td><td class="row-actions"><button class="edit-button" type="button">Edit</button><button class="delete-button" type="button">Delete</button></td></tr>`
+            `<tr class="expense" data-id="${expense.id}">
+                <td><span><strong>${expense.name}</strong></span></td>
+                <td><span class="pill pill-food">${expense.category}</span></td>
+                <td>${expense.date}</td>
+                <td class="amount">₱${expense.amount}</td>
+                <td class="row-actions">
+                    <button class="edit-button" type="button">Edit</button>
+                    <button class="delete-button" type="button">Delete</button>
+                </td>
+            </tr>`
         )
     })
 }
@@ -56,6 +65,18 @@ modalForm.addEventListener("submit", function(event) {
     display();
 });
 
+
+expenseList.addEventListener("click", (event) => {
+    const deleteBtn = event.target.closest(".delete-button");
+    if (deleteBtn) {
+        const targetExpense = deleteBtn.closest(".expense");
+        if (confirm("are you sure to delete?")) {
+            expenses = expenses.filter(expense => expense.id != targetExpense.dataset.id);
+            localStorage.setItem("expenses", JSON.stringify(expenses));
+            display();
+        }
+    }
+});
 
 closeModal.forEach(button => {
     button.addEventListener("click", () => {
