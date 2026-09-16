@@ -9,6 +9,7 @@ const balance = document.querySelector(".balance");
 const expenseCount = document.querySelector(".expense-count");
 const currentMonth = new Date().getMonth() + 1;
 let expenses = JSON.parse(localStorage.getItem("expenses")) || [];
+let isEdit = false;
 
 function display() {
     expenseList.innerHTML = '';
@@ -46,7 +47,7 @@ addExpenseModal.forEach(button => {
         modalBackdrop.removeAttribute("hidden");
     });
 });
-// TODO: Make this an eventlistener for the actual form make it submit action
+
 modalForm.addEventListener("submit", function(event) {
     event.preventDefault();
 
@@ -75,6 +76,21 @@ expenseList.addEventListener("click", (event) => {
             localStorage.setItem("expenses", JSON.stringify(expenses));
             display();
         }
+    }
+
+    // TODO: continue for the edit feaature of CRUD
+    const editBtn = event.target.closest(".edit-button");
+    if (editBtn) {
+        const targetedExpense = editBtn.closest(".expense");
+        const targetExpense = expenses.find(expense => expense.id === targetedExpense.dataset.id);
+        isEdit = true;
+
+        modalForm.elemeents["name"].value = targetExpense.name;
+        modalForm.elemeents["amount"].value = targetExpense.amount;
+        modalForm.elemeents["category"].value = targetExpense.category;
+        modalForm.elemeents["date"].value = targetExpense.date;
+        modalBackdrop.removeAttribute("hidden");
+
     }
 });
 
