@@ -65,34 +65,6 @@
             </div>
         </section>
 
-        <section class="content-grid">
-            <article class="panel spending-panel">
-                <div class="panel-header">
-                    <div><h2>Spending overview</h2><p>Your expenses by category</p></div>
-                    <button class="period-button" type="button">This month <span aria-hidden="true">⌄</span></button>
-                </div>
-                <div class="chart-area" role="img" aria-label="A weekly spending bar chart. Spending rises from week one to week three then falls in week four.">
-                    <div class="chart-y-axis" aria-hidden="true"><span>₱600</span><span>₱400</span><span>₱200</span><span>₱0</span></div>
-                    <div class="chart-bars" aria-hidden="true">
-                        <div class="bar-group"><div class="bar" style="height: 42%;"></div><span>Week 1</span></div>
-                        <div class="bar-group"><div class="bar" style="height: 64%;"></div><span>Week 2</span></div>
-                        <div class="bar-group"><div class="bar bar-highlight" style="height: 86%;"><b>₱520</b></div><span>Week 3</span></div>
-                        <div class="bar-group"><div class="bar" style="height: 55%;"></div><span>Week 4</span></div>
-                    </div>
-                </div>
-            </article>
-
-            <article class="panel category-panel">
-                <div class="panel-header"><div><h2>Top categories</h2><p>Where your money went</p></div><button class="text-button" type="button">View all</button></div>
-                <ul class="category-list">
-                    <li><span class="category-icon food" aria-hidden="true">⌁</span><span class="category-name">Food &amp; dining</span><span class="category-amount">₱452.80</span><span class="category-share">33%</span></li>
-                    <li><span class="category-icon transport" aria-hidden="true">↔</span><span class="category-name">Transport</span><span class="category-amount">₱238.20</span><span class="category-share">18%</span></li>
-                    <li><span class="category-icon shopping" aria-hidden="true">□</span><span class="category-name">Shopping</span><span class="category-amount">₱184.50</span><span class="category-share">14%</span></li>
-                    <li><span class="category-icon bills" aria-hidden="true">⌂</span><span class="category-name">Bills &amp; utilities</span><span class="category-amount">₱175.00</span><span class="category-share">13%</span></li>
-                </ul>
-            </article>
-        </section>
-
         <section class="panel transactions-panel" aria-labelledby="transactions-title">
             <div class="panel-header transaction-heading">
                 <div><h2 id="transactions-title">Expense list</h2><p>Your latest recorded expenses</p></div>
@@ -124,6 +96,7 @@
             </header>
 
             <form class="modal-form">
+                <input type="text" name="id" hidden>
                 <label class="field field-full">
                     <span>Expense name</span>
                     <input type="text" name="name" placeholder="e.g. Weekly groceries">

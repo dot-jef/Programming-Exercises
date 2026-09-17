@@ -50,16 +50,27 @@ addExpenseModal.forEach(button => {
 
 modalForm.addEventListener("submit", function(event) {
     event.preventDefault();
-
     const formData = new FormData(modalForm);
-    const newExpense = {
-        id: Date.now(),
-        name: formData.get("name"),
-        category: formData.get("category"),
-        amount: formData.get("amount"),
-        date: formData.get("date")
-    };
-    expenses.push(newExpense);
+
+    if (isEdit) {
+        expenses = expenses.map(expense => {
+            if (expense.id === Number(formData.get("id"))) {
+                return {...expense, id: Number(formData.get("id")), name: formData.get("name"), category: formData.get("category"), amount: formData.get("amount"), date: formData.get("date")}
+            }
+            return expense;
+        });
+        isEdit = false;
+    } else {
+        const newExpense = {
+            id: Date.now(),
+            name: formData.get("name"),
+            category: formData.get("category"),
+            amount: formData.get("amount"),
+            date: formData.get("date")
+        };
+        expenses.push(newExpense);
+    }
+    
     localStorage.setItem("expenses", JSON.stringify(expenses));
     modalForm.reset();
     modalBackdrop.setAttribute("hidden", "");
@@ -78,17 +89,17 @@ expenseList.addEventListener("click", (event) => {
         }
     }
 
-    // TODO: continue for the edit feaature of CRUD
     const editBtn = event.target.closest(".edit-button");
     if (editBtn) {
         const targetedExpense = editBtn.closest(".expense");
-        const targetExpense = expenses.find(expense => expense.id === targetedExpense.dataset.id);
+        const targetExpense = expenses.find(expense => expense.id === Number(targetedExpense.dataset.id));
         isEdit = true;
-
-        modalForm.elemeents["name"].value = targetExpense.name;
-        modalForm.elemeents["amount"].value = targetExpense.amount;
-        modalForm.elemeents["category"].value = targetExpense.category;
-        modalForm.elemeents["date"].value = targetExpense.date;
+        console.log(targetExpense.id);
+        modalForm.elements["id"].value = targetExpense.id;
+        modalForm.elements["name"].value = targetExpense.name;
+        modalForm.elements["amount"].value = targetExpense.amount;
+        modalForm.elements["category"].value = targetExpense.category;
+        modalForm.elements["date"].value = targetExpense.date;
         modalBackdrop.removeAttribute("hidden");
 
     }
@@ -96,6 +107,7 @@ expenseList.addEventListener("click", (event) => {
 
 closeModal.forEach(button => {
     button.addEventListener("click", () => {
+        modalForm.reset();
         modalBackdrop.setAttribute("hidden", "");
     });
 });
