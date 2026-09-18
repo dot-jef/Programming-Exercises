@@ -57,12 +57,19 @@
                 <div><h2 id="filter-title">Find an expense</h2><p>Filter your records by category or date.</p></div>
                 <span class="filter-status">12 records</span>
             </div>
-            <div class="filter-form">
-                <label class="filter-field"><span>Category</span><select><option>All categories</option><option>Food &amp; dining</option><option>Transport</option><option>Shopping</option><option>Bills &amp; utilities</option></select></label>
-                <label class="filter-field"><span>Start date</span><input type="date"></label>
-                <label class="filter-field"><span>End date</span><input type="date"></label>
-                <button class="filter-submit" type="button"><span aria-hidden="true">⌕</span>Filter expenses</button>
-            </div>
+            <form class="filter-form">
+                <label class="filter-field"><span>Category</span><select name="category">
+                    <option value="All">All categories</option>
+                    <option value="Utilities">Utilities</option>
+                    <option value="Food">Food &amp; dining</option>
+                    <option value="Transportation">Transportation</option>
+                    <option value="Healthcare">Healthcare</option>
+                    <option value="Debt Payment">Debt Payments</option>
+                </select></label>
+                <label class="filter-field"><span>Start date</span><input type="date" name="start-date"></label>
+                <label class="filter-field"><span>End date</span><input type="date" name="end-date"></label>
+                <button class="filter-submit" type="submit"><span aria-hidden="true">⌕</span>Filter expenses</button>
+            </form>
         </section>
 
         <section class="panel transactions-panel" aria-labelledby="transactions-title">

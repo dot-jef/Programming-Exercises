@@ -8,8 +8,11 @@ const emptyState = document.querySelector(".empty-state");
 const balance = document.querySelector(".balance");
 const expenseCount = document.querySelector(".expense-count");
 const currentMonth = new Date().getMonth() + 1;
+const filterForm = document.querySelector(".filter-form");
+let filteredExpenses = [];
 let expenses = JSON.parse(localStorage.getItem("expenses")) || [];
 let isEdit = false;
+let isFiltered = false;
 
 function display() {
     expenseList.innerHTML = '';
@@ -24,6 +27,28 @@ function display() {
     }
 
     emptyState.setAttribute("hidden", "");
+    // filtered display
+    if (isFiltered) {
+        filteredExpenses.forEach(expense => {
+            expenseList.insertAdjacentHTML("beforeend", 
+                `<tr class="expense" data-id="${expense.id}">
+                    <td><span><strong>${expense.name}</strong></span></td>
+                    <td><span class="pill pill-food">${expense.category}</span></td>
+                    <td>${expense.date}</td>
+                    <td class="amount">₱${expense.amount}</td>
+                    <td class="row-actions">
+                        <button class="edit-button" type="button">Edit</button>
+                        <button class="delete-button" type="button">Delete</button>
+                    </td>
+                </tr>`
+            )
+        })
+        if (filteredExpenses.length === 0) {
+            emptyState.removeAttribute("hidden");
+        }
+        return;
+    }
+    
     expenses.forEach(expense => {
         expenseList.insertAdjacentHTML("beforeend", 
             `<tr class="expense" data-id="${expense.id}">
@@ -110,6 +135,25 @@ closeModal.forEach(button => {
         modalForm.reset();
         modalBackdrop.setAttribute("hidden", "");
     });
+});
+
+// TODO: Add the filter feature
+filterForm.addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const formData = new FormData(filterForm);
+    if (formData.get("category") !== "All") {
+        isFiltered = true;
+        filteredExpenses = expenses.filter(expense => 
+        expense.category === formData.get("category") && 
+        expense.date >= formData.get("start-date") &&
+        expense.date <= formData.get("end-date"));
+        console.log(filteredExpenses);
+    } else {
+        isFiltered = false;
+        filteredExpenses = [];
+    }
+    display();
 });
 
 display();
