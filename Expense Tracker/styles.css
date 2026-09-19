@@ -105,9 +105,6 @@ td small { margin-top: 3px; color: #9aa59e; font-size: .66rem; }
 .train { background: #e7efff; color: #5972b3; }
 .salary { background: #e2f3e9; color: var(--green); }
 .pill { display: inline-block; padding: 4px 7px; border-radius: 5px; font-size: .66rem; font-weight: 700; }
-.pill-food { background: #fff2e8; color: #a75b28; }
-.pill-transport { background: #edf2ff; color: #536cae; }
-.pill-income { background: #e8f5ec; color: #357b50; }
 .amount { color: #26332c; font-weight: 750; }
 .amount.income { color: var(--green); }
 .row-actions { display: flex; gap: 7px; white-space: nowrap; }
